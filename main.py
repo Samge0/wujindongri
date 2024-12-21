@@ -12,7 +12,7 @@ while True:
     distance = ((current_position.x - last_position.x) ** 2 + (current_position.y - last_position.y) ** 2) ** 0.5
     
     if distance < threshold:
-        pyautogui.click(390, 930)
+        pyautogui.click(400, 910)
     else:
         print(pause_sleep_time)
         time.sleep(pause_sleep_time)
