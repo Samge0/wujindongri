@@ -3,7 +3,7 @@
 ### 依赖
 ```shell
 conda create -n wujindongri python=3.10.13 -y 
-pip install pyautogui
+pip install pyautogui pyperclip
 ```
 
 ## 激活环境
