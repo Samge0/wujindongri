@@ -29,3 +29,10 @@ conda activate wujindongri
     ```shell
     python main.py
     ```
+
+### 增加自动狩猎功能
+- 配置`auto_hunting.py`中需要点击的坐标组（自动狩猎一般配置4个步骤点即可），然后运行即可：
+    ```shell
+    python auto_hunting.py
+    ```
+    ![无尽冬日-自动狩猎](https://github.com/user-attachments/assets/a71b6bba-607d-4ba7-b9ab-703cae6e1f88)
