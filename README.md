@@ -35,4 +35,4 @@ conda activate wujindongri
     ```shell
     python auto_hunting.py
     ```
-    ![无尽冬日-自动狩猎](https://github.com/user-attachments/assets/a71b6bba-607d-4ba7-b9ab-703cae6e1f88)
+    ![无尽冬日-自动狩猎-2](https://github.com/user-attachments/assets/9277e3c1-fda1-49b4-ab61-aa1d2fa77f2e)
