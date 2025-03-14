@@ -5,12 +5,12 @@
 conda create -n wujindongri python=3.10.13 -y 
 ```
 
-## 激活环境
+### 激活环境
 ```shell
 conda activate wujindongri
 ```
 
-## 安装依赖
+### 安装依赖
 ```shell
 pip install -r requirements.txt
 ```
