@@ -3,12 +3,16 @@
 ### 依赖
 ```shell
 conda create -n wujindongri python=3.10.13 -y 
-pip install -r requirements.txt
 ```
 
 ## 激活环境
 ```shell
 conda activate wujindongri
+```
+
+## 安装依赖
+```shell
+pip install -r requirements.txt
 ```
 
 ### 使用
