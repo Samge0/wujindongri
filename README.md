@@ -33,6 +33,11 @@ pip install -r requirements.txt
     ```shell
     python main.py
     ```
+    
+
+https://github.com/user-attachments/assets/278e4076-171a-47e2-8df4-49884b78cb45
+
+
 
 ### 增加自动狩猎功能
 - 配置`auto_hunting.py`中需要点击的坐标组（自动狩猎一般配置4个步骤点即可），然后运行即可：
