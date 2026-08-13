@@ -5,6 +5,9 @@
 conda create -n wujindongri python=3.10.13 -y 
 ```
 
+
+> 🌐 **[在线宣传页](https://samge0.github.io/wujindongri/)** — 可视化了解功能特性与工作流程
+
 ### 激活环境
 ```shell
 conda activate wujindongri

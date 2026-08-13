@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无尽冬日-自动点击治疗脚本</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            400: '#e755e5',
+                            500: '#d841d6',
+                            600: '#c236bc',
+                            700: '#a82ea3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Manrope', 'Noto Sans SC', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #d841d6 0%, #a82ea3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(216, 65, 214, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="icon.png" alt="无尽冬日" class="w-9 h-9">
+                    <span class="text-xl font-bold gradient-text">无尽冬日</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-brand-500 transition">功能特性</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-brand-500 transition">使用指南</a>
+                    <a href="#faq" class="text-gray-600 hover:text-brand-500 transition">常见问题</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com" class="text-gray-600 hover:text-gray-900 transition" aria-label="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="#install" class="px-4 py-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-lg font-medium hover:from-brand-600 hover:to-brand-700 transition shadow-lg shadow-brand-500/30">
+                        开始使用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-8">
+                    <span class="w-2 h-2 bg-brand-500 rounded-full mr-2"></span>
+                    <span class="text-sm text-brand-700 font-medium">自动化游戏脚本工具</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 max-w-5xl mx-auto">
+                    <span class="gradient-text">无尽冬日</span>
+                    <span class="text-gray-900">自动点击治疗脚本</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto" style="max-width: 65ch;">
+                    一款专为《无尽冬日》游戏设计的自动化工具，支持自动点击治疗、自动狩猎等功能，提升游戏体验
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#install" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-xl font-semibold text-lg hover:from-brand-600 hover:to-brand-700 transition shadow-xl shadow-brand-500/30">
+                        立即安装
+                    </a>
+                    <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-white text-gray-700 rounded-xl font-semibold text-lg border-2 border-gray-200 hover:border-brand-500 hover:text-brand-500 transition">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">核心功能特性</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" style="max-width: 65ch;">
+                    强大的自动化功能，让游戏操作更加便捷高效
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">自动点击治疗</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        配置治疗按钮坐标后，脚本将自动执行点击操作，无需手动操作即可完成治疗流程
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">自动狩猎功能</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        支持配置多步骤坐标点，实现完整的自动化狩猎流程，提高资源获取效率
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">坐标点拾取</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        提供两种坐标获取方式：右键点击拾取和实时坐标显示，支持3秒自动复制功能
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">灵活配置</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        所有功能均支持自定义配置，可根据个人需求调整点击位置和执行顺序
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">简单易用</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        基于 Python 开发，安装依赖即可运行，无需复杂的配置过程
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass rounded-2xl p-8 card-hover border border-gray-100">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">安全可靠</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        本地运行，无需联网，确保游戏账号和数据安全
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">使用指南</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" style="max-width: 65ch;">
+                    快速上手，只需几个简单步骤
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mb-4 shadow-lg shadow-brand-500/20">
+                            1
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900">创建环境</h3>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono overflow-x-auto">
+                            <pre>conda create -n wujindongri python=3.10.13 -y</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mb-4 shadow-lg shadow-brand-500/20">
+                            2
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900">激活环境</h3>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono overflow-x-auto">
+                            <pre>conda activate wujindongri</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mb-4 shadow-lg shadow-brand-500/20">
+                            3
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900">安装依赖</h3>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono overflow-x-auto">
+                            <pre>pip install -r requirements.txt</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-gray-100 card-hover">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mb-4 shadow-lg shadow-brand-500/20">
+                            4
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-gray-900">运行脚本</h3>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono overflow-x-auto">
+                            <pre>python main.py</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coordinate Tools -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-6 text-center text-gray-900">坐标点获取工具</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass rounded-2xl p-6 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mr-3 shadow-md">
+                                A
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900">右键点击拾取</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">主动右键点击屏幕拾取坐标点，默认右键点击后自动退出监听</p>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono">
+                            <pre>python getpoints_by_click.py</pre>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold mr-3 shadow-md">
+                                B
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900">实时坐标显示</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">打印当前鼠标所在坐标，超过3秒自动复制当前鼠标所在坐标</p>
+                        <div class="bg-gray-900 rounded-lg p-3 text-sm text-gray-300 font-mono">
+                            <pre>python getpoints.py</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auto Hunting -->
+            <div class="mt-12 glass rounded-2xl p-8 border border-gray-100">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white mr-4 shadow-lg shadow-brand-500/20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">自动狩猎功能</h3>
+                        <p class="text-gray-600">配置坐标组后自动执行狩猎流程</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg p-4 text-sm text-gray-300 font-mono overflow-x-auto">
+                    <pre>python auto_hunting.py</pre>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">
+                    * 在 auto_hunting.py 中配置需要点击的坐标组（自动狩猎一般配置4个步骤点即可）
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">常见问题</h2>
+                <p class="text-lg text-gray-600">快速了解项目相关信息</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="glass rounded-xl border border-gray-100 overflow-hidden group">
+                    <summary class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50/50 transition">
+                        支持哪些Python版本？
+                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600 leading-relaxed">
+                        建议使用 Python 3.10.13 版本，使用 conda 创建环境可以确保版本一致性。
+                    </div>
+                </details>
+
+                <details class="glass rounded-xl border border-gray-100 overflow-hidden group">
+                    <summary class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50/50 transition">
+                        如何获取屏幕坐标点？
+                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600 leading-relaxed">
+                        提供两种方式：使用 getpoints_by_click.py 进行右键点击拾取，或使用 getpoints.py 实时显示鼠标坐标并支持3秒自动复制。
+                    </div>
+                </details>
+
+                <details class="glass rounded-xl border border-gray-100 overflow-hidden group">
+                    <summary class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50/50 transition">
+                        自动狩猎需要配置多少个坐标点？
+                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600 leading-relaxed">
+                        一般配置4个步骤点即可完成完整的狩猎流程。具体坐标点根据游戏界面和个人需求进行配置。
+                    </div>
+                </details>
+
+                <details class="glass rounded-xl border border-gray-100 overflow-hidden group">
+                    <summary class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50/50 transition">
+                        脚本运行时需要注意什么？
+                        <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600 leading-relaxed">
+                        运行前确保已正确配置所有需要的坐标点，保持游戏窗口在前台显示，避免其他操作干扰脚本执行。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <img src="icon.png" alt="无尽冬日" class="w-8 h-8">
+                    <span class="text-lg font-bold gradient-text">无尽冬日</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://github.com" class="text-gray-600 hover:text-gray-900 transition flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <div class="text-sm text-gray-500">
+                    © 2024 无尽冬日. Licensed under MIT
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
